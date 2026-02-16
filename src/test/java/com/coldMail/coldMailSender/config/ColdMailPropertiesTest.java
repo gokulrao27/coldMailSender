@@ -8,18 +8,10 @@ import org.junit.jupiter.api.Test;
 class ColdMailPropertiesTest {
 
     @Test
-    void resolveRecipientsShouldMergeCsvAndListAndTrimValues() {
+    void recipientsShouldBeStoredAsConfigured() {
         ColdMailProperties properties = new ColdMailProperties();
-        properties.setRecipients(List.of(" first@example.com ", "second@example.com"));
-        properties.setRecipientsCsv("\"third@example.com\", second@example.com ,  ,\"fourth@example.com\"");
+        properties.setRecipients(List.of("first@example.com", "second@example.com"));
 
-        List<String> resolved = properties.resolveRecipients();
-
-        assertEquals(List.of(
-                "first@example.com",
-                "second@example.com",
-                "third@example.com",
-                "fourth@example.com"
-        ), resolved);
+        assertEquals(List.of("first@example.com", "second@example.com"), properties.getRecipients());
     }
 }

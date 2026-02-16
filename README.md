@@ -21,9 +21,7 @@ The app reads settings from `src/main/resources/application.yaml` and environmen
 ### Required environment variables
 - `MAIL_USERNAME` → SMTP username / from-address
 - `MAIL_PASSWORD` → SMTP password or app password
-- At least one recipient:
-  - `RECIPIENT_1`
-  - `RECIPIENT_2` (optional)
+- `RECIPIENTS` → comma-separated list of recipients (for example `"a@example.com,b@example.com"`)
 
 ### Optional environment variables
 - `MAIL_HOST` (default: `smtp.gmail.com`)
@@ -34,8 +32,7 @@ The app reads settings from `src/main/resources/application.yaml` and environmen
 ```bash
 export MAIL_USERNAME="your_email@gmail.com"
 export MAIL_PASSWORD="your_app_password"
-export RECIPIENT_1="first.recipient@example.com"
-export RECIPIENT_2="second.recipient@example.com"
+export RECIPIENTS="first.recipient@example.com,second.recipient@example.com"
 
 ./mvnw spring-boot:run
 ```
@@ -44,8 +41,7 @@ export RECIPIENT_2="second.recipient@example.com"
 ```powershell
 $env:MAIL_USERNAME="your_email@gmail.com"
 $env:MAIL_PASSWORD="your_app_password"
-$env:RECIPIENT_1="first.recipient@example.com"
-$env:RECIPIENT_2="second.recipient@example.com"
+$env:RECIPIENTS="first.recipient@example.com,second.recipient@example.com"
 
 .\mvnw.cmd spring-boot:run
 ```
@@ -74,10 +70,12 @@ In `application.yaml`:
 - **"Missing mail credentials"** in logs:
   - Set `MAIL_USERNAME` and `MAIL_PASSWORD`.
 - **"No recipients configured"** in logs:
-  - Set `RECIPIENT_1` (and optionally `RECIPIENT_2`).
+  - Set `RECIPIENTS` with a comma-separated list.
 - SMTP auth failures:
   - Verify host/port and credentials.
   - For Gmail, ensure 2FA + App Password is used.
+- `UnknownHostException: smtp.gmail.com`:
+  - The runtime environment cannot resolve DNS / reach the internet. Check network, proxy, firewall, or run from a machine with outbound SMTP access.
 
 ## Test
 ```bash

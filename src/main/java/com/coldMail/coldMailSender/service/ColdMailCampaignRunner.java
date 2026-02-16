@@ -47,7 +47,7 @@ public class ColdMailCampaignRunner implements CommandLineRunner {
                 .toList();
 
         if (recipients.isEmpty()) {
-            LOGGER.warn("No recipients configured. Set RECIPIENT_1 / RECIPIENT_2 (or cold-mail.recipients). Campaign skipped.");
+            LOGGER.warn("No recipients configured. Set RECIPIENTS (comma-separated) or cold-mail.recipients. Campaign skipped.");
             return;
         }
 

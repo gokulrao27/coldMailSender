@@ -1,3 +1,22 @@
 spring:
   application:
     name: coldMailSender
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+cold-mail:
+  enabled: ${COLD_MAIL_ENABLED:true}
+  template: coldmail.xml
+  attachment-path: Narayana_Resume.pdf
+  delay-millis: 4000
+  recipients-csv: ${RECIPIENTS:}
+  recipients: []

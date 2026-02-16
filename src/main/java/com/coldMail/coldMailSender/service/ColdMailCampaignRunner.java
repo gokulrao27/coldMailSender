@@ -41,10 +41,13 @@ public class ColdMailCampaignRunner implements CommandLineRunner {
             return;
         }
 
-        List<String> recipients = properties.resolveRecipients();
+        List<String> recipients = properties.getRecipients()
+                .stream()
+                .filter(recipient -> recipient != null && !recipient.isBlank())
+                .toList();
 
         if (recipients.isEmpty()) {
-            LOGGER.warn("No recipients configured. Set RECIPIENTS like \"example@gmail.com\",\"example2@gmail.com\" (or cold-mail.recipients / cold-mail.recipients-csv). Campaign skipped.");
+            LOGGER.warn("No recipients configured. Set RECIPIENT_1 / RECIPIENT_2 (or cold-mail.recipients). Campaign skipped.");
             return;
         }
 

@@ -4,8 +4,8 @@ spring:
   mail:
     host: ${MAIL_HOST:smtp.gmail.com}
     port: ${MAIL_PORT:587}
-    username: ${MAIL_USERNAME:}
-    password: ${MAIL_PASSWORD:}
+    username: ${MAIL_USERNAME:mahendrakarnarayan7@gmail.com}
+    password: ${MAIL_PASSWORD:MOM@dad143}
     properties:
       mail:
         smtp:
@@ -19,4 +19,4 @@ cold-mail:
   attachment-path: Narayana_Resume.pdf
   attachment-name: Narayana_Rao_Mahendrakar_Resume.pdf
   delay-millis: 4000
-  recipients: ${RECIPIENTS:}
+  recipients: ${RECIPIENTS:"gokulrao27@gmail.com","igokulrao27@gmail.com"}

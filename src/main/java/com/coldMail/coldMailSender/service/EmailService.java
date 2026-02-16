@@ -3,6 +3,8 @@ package com.coldMail.coldMailSender.service;
 import com.coldMail.coldMailSender.config.ColdMailProperties;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.core.io.ClassPathResource;
+
+import java.nio.file.Path;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -29,7 +31,8 @@ public class EmailService {
         helper.setText(htmlBody, true);
 
         ClassPathResource attachment = new ClassPathResource(properties.getAttachmentPath());
-        helper.addAttachment(properties.getAttachmentName(), attachment);
+        String attachmentFilename = Path.of(properties.getAttachmentPath()).getFileName().toString();
+        helper.addAttachment(attachmentFilename, attachment);
 
         mailSender.send(message);
     }

@@ -10,7 +10,6 @@ public class ColdMailProperties {
     private boolean enabled = true;
     private String template = "coldmail.xml";
     private String attachmentPath = "Narayana_Resume.pdf";
-    private String attachmentName = "Narayana_Rao_Mahendrakar_Resume.pdf";
     private long delayMillis = 4000;
     private List<String> recipients = new ArrayList<>();
 
@@ -38,13 +37,6 @@ public class ColdMailProperties {
         this.attachmentPath = attachmentPath;
     }
 
-    public String getAttachmentName() {
-        return attachmentName;
-    }
-
-    public void setAttachmentName(String attachmentName) {
-        this.attachmentName = attachmentName;
-    }
 
     public long getDelayMillis() {
         return delayMillis;

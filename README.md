@@ -63,7 +63,7 @@ export COLD_MAIL_ENABLED=false
 In `application.yaml`:
 - `cold-mail.template` → template file name (classpath)
 - `cold-mail.attachment-path` → attachment resource path
-- `cold-mail.attachment-name` → attachment display name
+- attachment display name is automatically derived from `cold-mail.attachment-path` file name
 - `cold-mail.delay-millis` → delay between sends
 
 ## Troubleshooting

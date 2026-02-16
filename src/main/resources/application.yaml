@@ -3,20 +3,19 @@ spring:
     name: coldMailSender
   mail:
     host: ${MAIL_HOST:smtp.gmail.com}
-    port: ${MAIL_PORT:587}
+    port: ${MAIL_PORT:465}
     username: ${MAIL_USERNAME:mahendrakarnarayan7@gmail.com}
     password: ${MAIL_PASSWORD:MOM@dad143}
     properties:
       mail:
         smtp:
           auth: true
-          starttls:
+          ssl:
             enable: true
 
 cold-mail:
   enabled: ${COLD_MAIL_ENABLED:true}
   template: coldmail.xml
   attachment-path: Narayana_Resume.pdf
-  attachment-name: Narayana_Rao_Mahendrakar_Resume.pdf
   delay-millis: 4000
   recipients: ${RECIPIENTS:"gokulrao27@gmail.com","igokulrao27@gmail.com"}

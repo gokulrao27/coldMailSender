@@ -19,6 +19,4 @@ cold-mail:
   attachment-path: Narayana_Resume.pdf
   attachment-name: Narayana_Rao_Mahendrakar_Resume.pdf
   delay-millis: 4000
-  recipients:
-    - ${RECIPIENT_1:}
-    - ${RECIPIENT_2:}
+  recipients: ${RECIPIENTS:}

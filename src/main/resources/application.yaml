@@ -2,15 +2,15 @@ spring:
   application:
     name: coldMailSender
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: yourfull@gmail.com
-    password: toja piid gale lfbh
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:465}
+    username: ${MAIL_USERNAME:mahendrakarnarayan7@gmail.com}
+    password: ${MAIL_PASSWORD:MOM@dad143}
     properties:
       mail:
         smtp:
           auth: true
-          starttls:
+          ssl:
             enable: true
 
 cold-mail:

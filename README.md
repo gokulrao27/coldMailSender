@@ -25,7 +25,7 @@ The app reads settings from `src/main/resources/application.yaml` and environmen
 
 ### Optional environment variables
 - `MAIL_HOST` (default: `smtp.gmail.com`)
-- `MAIL_PORT` (default: `587`)
+- `MAIL_PORT` (default: `465`)
 - `COLD_MAIL_ENABLED` (default: `true`)
 
 ## Quick run (Linux/macOS)

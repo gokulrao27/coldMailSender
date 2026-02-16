@@ -1,47 +1,36 @@
 package com.coldMail.coldMailSender.service;
 
-import com.coldMail.coldMailSender.config.MailConfig;
-import jakarta.mail.*;
-import jakarta.mail.internet.*;
+import com.coldMail.coldMailSender.config.ColdMailProperties;
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
-import java.io.File;
-
+@Service
 public class EmailService {
+
+    private final JavaMailSender mailSender;
+    private final ColdMailProperties properties;
+
+    public EmailService(JavaMailSender mailSender, ColdMailProperties properties) {
+        this.mailSender = mailSender;
+        this.properties = properties;
+    }
 
     public void sendEmail(String recipient,
                           String subject,
                           String htmlBody) throws Exception {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        Session session = MailConfig.getSession();
+        helper.setTo(recipient);
+        helper.setSubject(subject);
+        helper.setText(htmlBody, true);
 
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(MailConfig.getUsername()));
-        message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse(recipient));
-        message.setSubject(subject);
+        ClassPathResource attachment = new ClassPathResource(properties.getAttachmentPath());
+        helper.addAttachment(attachment.getFilename(), attachment);
 
-        // HTML Part
-        MimeBodyPart htmlPart = new MimeBodyPart();
-        htmlPart.setContent(htmlBody, "text/html; charset=utf-8");
-
-        // Attachment
-        MimeBodyPart attachmentPart = new MimeBodyPart();
-
-        File resumeFile = new File(
-                getClass().getClassLoader()
-                        .getResource("Narayana_Resume.pdf")
-                        .toURI()
-        );
-
-        attachmentPart.attachFile(resumeFile);
-        attachmentPart.setFileName("Narayana_Rao_Mahendrakar_Resume.pdf");
-
-        Multipart multipart = new MimeMultipart();
-        multipart.addBodyPart(htmlPart);
-        multipart.addBodyPart(attachmentPart);
-
-        message.setContent(multipart);
-
-        Transport.send(message);
+        mailSender.send(message);
     }
 }

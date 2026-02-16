@@ -29,7 +29,7 @@ public class EmailService {
         helper.setText(htmlBody, true);
 
         ClassPathResource attachment = new ClassPathResource(properties.getAttachmentPath());
-        helper.addAttachment(attachment.getFilename(), attachment);
+        helper.addAttachment(properties.getAttachmentName(), attachment);
 
         mailSender.send(message);
     }

@@ -17,6 +17,8 @@ cold-mail:
   enabled: ${COLD_MAIL_ENABLED:true}
   template: coldmail.xml
   attachment-path: Narayana_Resume.pdf
+  attachment-name: Narayana_Rao_Mahendrakar_Resume.pdf
   delay-millis: 4000
-  recipients-csv: ${RECIPIENTS:}
-  recipients: []
+  recipients:
+    - ${RECIPIENT_1:}
+    - ${RECIPIENT_2:}

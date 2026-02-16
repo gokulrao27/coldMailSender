@@ -17,5 +17,5 @@ cold-mail:
   enabled: ${COLD_MAIL_ENABLED:true}
   template: coldmail.xml
   attachment-path: Narayana_Resume.pdf
-  delay-millis: 4000
+  delay-millis: 6000
   recipients: ${RECIPIENTS:"gokulrao27@gmail.com","igokulrao27@gmail.com"}

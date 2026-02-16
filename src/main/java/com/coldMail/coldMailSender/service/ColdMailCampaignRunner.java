@@ -44,6 +44,7 @@ public class ColdMailCampaignRunner implements CommandLineRunner {
         List<String> recipients = properties.getRecipients()
                 .stream()
                 .filter(recipient -> recipient != null && !recipient.isBlank())
+                .map(recipient -> recipient.replace("\"", "").trim()) // <-- Cleans up quotes and spaces
                 .toList();
 
         if (recipients.isEmpty()) {

@@ -25,7 +25,7 @@ The app reads settings from `src/main/resources/application.yaml` and environmen
 
 ### Optional environment variables
 - `MAIL_HOST` (default: `smtp.gmail.com`)
-- `MAIL_PORT` (default: `587`)
+- `MAIL_PORT` (default: `465`)
 - `COLD_MAIL_ENABLED` (default: `true`)
 
 ## Quick run (Linux/macOS)
@@ -63,7 +63,7 @@ export COLD_MAIL_ENABLED=false
 In `application.yaml`:
 - `cold-mail.template` → template file name (classpath)
 - `cold-mail.attachment-path` → attachment resource path
-- `cold-mail.attachment-name` → attachment display name
+- attachment display name is automatically derived from `cold-mail.attachment-path` file name
 - `cold-mail.delay-millis` → delay between sends
 
 ## Troubleshooting
